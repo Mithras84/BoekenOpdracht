@@ -12,24 +12,16 @@ import java.sql.SQLException;
  * @author 		Pieter
  */
 public class Start {
-    static CreateDB mCdb;
 
     /**
      * @param args
      */
     public static void main(String[] args) {
 	// TODO Auto-generated method stub
-	mCdb = new CreateDB();
+	
 	try {
-	    //Open connection.
-	    mCdb.initConnection();
-	    
 	    //Create all tables:
 	    createTables();
-	    
-	    //Close connection.
-	    if (mCdb.closeConnection() )
-		System.out.println("Connection closed!");
 	    
 	} catch (SQLException e) {
 	    // TODO Auto-generated catch block
@@ -38,12 +30,13 @@ public class Start {
     }
     
     protected static void createTables () throws SQLException {
+	CreateTables ct = new CreateTables();
 	//Create table Voorraad:
-	if (mCdb.createTableVoorraad() )
+	if (ct.createTableVoorraad() )
 	    System.out.println("Table 'Voorraad' Created");
-	if (mCdb.createTableBoek() )
+	if (ct.createTableBoek() )
 	    System.out.println("Table 'Boek' Created");
-	if (mCdb.createTableRekeningen() ) 
+	if (ct.createTableRekeningen() ) 
 	    System.out.println("Table 'Rekeningen' Created");
     }
 

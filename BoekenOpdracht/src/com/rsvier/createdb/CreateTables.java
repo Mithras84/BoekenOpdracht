@@ -2,7 +2,7 @@
  * 
  */
 package com.rsvier.createdb;
-import java.sql.DriverManager;
+
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -22,26 +22,12 @@ import java.sql.Statement;
 
 
 
-public class CreateDB {
+public class CreateTables {
     protected  Connection mDBConnection;
     
-    public void initConnection() throws SQLException {
-	// TODO Auto-generated method stub
-	String host = "jdbc:mysql://127.0.0.1:3306/";
-	String dbName = "winkel";
-	String userName = "user=root";
-	String passWord = "password=";
-	
-	if (createConnection(host + dbName + "?" + userName + "&" + passWord) ) {
-	    System.out.println("Connected!");
-	} else {
-	    System.out.println("Failed!");
-	}	
-    }
-    
-    public boolean closeConnection() throws SQLException {
-	mDBConnection.close();
-	return mDBConnection.isClosed();
+    CreateTables () throws SQLException {
+	ConnectDB db = new ConnectDB ();	
+	mDBConnection = db.getDBConnection();
     }
     
     public boolean createTableVoorraad () throws SQLException {
@@ -90,15 +76,4 @@ public class CreateDB {
 	stmt.close();
 	return true;
     }
-    
-    protected boolean createConnection (String url) throws SQLException { 
-	mDBConnection = DriverManager.getConnection(url);
-	
-	if (mDBConnection.isValid(0))
-	    return true;
-	else return false;
-    }
-    
-    
-
 }
