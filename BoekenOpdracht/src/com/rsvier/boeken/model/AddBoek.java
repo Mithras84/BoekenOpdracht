@@ -15,12 +15,17 @@ import com.rsvier.boeken.db.InsertDB;
  * @author 		Pieter
  */
 public class AddBoek {
+    
     private ArrayList<Boek> mBoekenLijst;
     
-    AddBoek () {
+    public AddBoek () {
 	mBoekenLijst = new ArrayList<> () ;
     }
     
+    /**
+     * This function adds all books in the list to the Database.
+     * The query gets generated in the class InsertDB.
+     */
     public void lijstNaarDB () {
 	InsertDB idb = new InsertDB();
 	
@@ -32,6 +37,7 @@ public class AddBoek {
 		e.printStackTrace();
 	    }
 	}
+	idb.closeCon();
     }
     
     public void voegToeAanLijst (Boek boek) {

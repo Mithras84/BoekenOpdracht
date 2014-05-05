@@ -35,6 +35,15 @@ public class CreateTables {
 	mDBConnection = db.getDBConnection();
     }
     
+    public void closeCon () {
+	try {
+	    mDBConnection.close();
+	} catch (SQLException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
+    }
+    
     public boolean createTableVoorraad () throws SQLException {
 	String query = "CREATE TABLE IF NOT EXISTS voorraad "
 		+ "("

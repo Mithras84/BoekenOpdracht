@@ -16,7 +16,7 @@ import com.rsvier.boeken.model.Boek;
  * @author 		Pieter
  */
 public class InsertDB {
-    protected  Connection mDBConnection;
+    protected Connection mDBConnection;
     protected PreparedStatement mPStmt;
     
     public InsertDB () {
@@ -28,9 +28,20 @@ public class InsertDB {
 	    
 	}
     }
+    
+    public void closeCon () {
+	try {
+	    mDBConnection.close();
+	} catch (SQLException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
+    }
+    
+    
     /**
      * Prepares a statement for adding a book to the table.
-     * The table book has 6 fields.
+     * The table book has 6 fields. This function gets called by the AddBoek class.
      * @param table
      * @param boek
      * @throws SQLException
@@ -42,6 +53,7 @@ public class InsertDB {
 	//Prepares the query.
 	mPStmt = mDBConnection.prepareStatement(query);
 	
+	//Values from 'Boek' are added to the prepared statement.
 	mPStmt.setInt(1,boek.getISBN());
 	mPStmt.setString(2, boek.getTitel());
 	mPStmt.setString(3, boek.getAuteur());
@@ -49,6 +61,7 @@ public class InsertDB {
 	mPStmt.setString(5, boek.getGenre());
 	mPStmt.setInt(6, boek.getPaginas());
 	
+	//Execute the statement
 	mPStmt.execute();
 	
 	System.out.println("Boek toegevoegd!");
