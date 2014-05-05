@@ -18,6 +18,11 @@ import java.sql.Statement;
  * 	databank: 'boeken_opdracht'
  * 	username: 'root'
  * 	password: <<GEEN WW NODIG>> 
+ * 
+ * @todo:
+ * - Verkeerd gelezen. We hebben twee Databanken, namelijk 'Winkel' voor tabellen 'boek'
+ *   en 'voorraad' en 'Bank' voor de tabel 'rekeningen'. Dit moet nog even worden aangepast.
+ * 
  */
 
 

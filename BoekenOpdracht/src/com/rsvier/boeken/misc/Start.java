@@ -4,8 +4,6 @@
 package com.rsvier.boeken.misc;
 
 import java.sql.SQLException;
-import com.rsvier.boeken.db.*;
-
 import com.rsvier.boeken.db.CreateTables;
 
 /**
