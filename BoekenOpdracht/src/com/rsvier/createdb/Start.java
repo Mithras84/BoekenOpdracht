@@ -19,7 +19,7 @@ public class Start {
      */
     public static void main(String[] args) {
 	// TODO Auto-generated method stub
-	CreateDB mCdb = new CreateDB();
+	mCdb = new CreateDB();
 	try {
 	    //Open connection.
 	    mCdb.initConnection();

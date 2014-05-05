@@ -54,7 +54,9 @@ public class CreateDB {
 		+ ")";
 	
 	Statement stmt = mDBConnection.createStatement();
-	return stmt.execute(query);
+	stmt.execute(query);
+	stmt.close();
+	return true;
     }
     
     public boolean createTableBoek () throws SQLException {
@@ -69,7 +71,9 @@ public class CreateDB {
 		+ ")";
 	
 	Statement stmt = mDBConnection.createStatement();
-	return stmt.execute(query);
+	stmt.execute(query);
+	stmt.close();
+	return true;
     }
     
     public boolean createTableRekeningen () throws SQLException {
@@ -78,11 +82,13 @@ public class CreateDB {
 		+ "rekeningnummer INT NOT NULL PRIMARY KEY,"
 		+ "naam VARCHAR(255),"
 		+ "plaats VARCHAR(255),"
-		+ "saldo CURRENCY"
+		+ "saldo DOUBLE"
 		+ ")";
 	
 	Statement stmt = mDBConnection.createStatement();
-	return stmt.execute(query);
+	stmt.execute(query);
+	stmt.close();
+	return true;
     }
     
     protected boolean createConnection (String url) throws SQLException { 
