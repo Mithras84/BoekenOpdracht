@@ -6,8 +6,8 @@ package com.rsvier.boeken.misc;
 import java.sql.SQLException;
 
 import com.rsvier.boeken.db.CreateTables;
-import com.rsvier.boeken.model.AddBoek;
 import com.rsvier.boeken.model.Boek;
+import com.rsvier.boeken.model.BoekenLijst;
 
 /**
  * Class description
@@ -51,14 +51,14 @@ public class Start {
     }
     
     protected static void addBooksToTable () throws SQLException {
-	AddBoek ab = new AddBoek();
+	BoekenLijst bl = new BoekenLijst();
 	
-	ab.voegToeAanLijst(new Boek( 90414156 , "Boek1", "Auteur1", 14.99, "Thriller", 285));
-	ab.voegToeAanLijst(new Boek( 57456892 , "Boek2", "Auteur1", 17.99, "Roman", 385));
-	ab.voegToeAanLijst(new Boek( 54558625 , "Boek3", "Auteur2", 11.99, "Thriller", 178));
-	ab.voegToeAanLijst(new Boek( 87566214 , "Boek4", "Auteur3", 12.99, "Sci-Fi", 548));
+	bl.voegToeAanLijst(new Boek( 90414156 , "Boek1", "Auteur1", 14.99, "Thriller", 285));
+	bl.voegToeAanLijst(new Boek( 57456892 , "Boek2", "Auteur1", 17.99, "Roman", 385));
+	bl.voegToeAanLijst(new Boek( 54558625 , "Boek3", "Auteur2", 11.99, "Thriller", 178));
+	bl.voegToeAanLijst(new Boek( 87566214 , "Boek4", "Auteur3", 12.99, "Sci-Fi", 548));
 	
-	ab.lijstNaarDB();	
+	bl.lijstNaarDB();	
     }
 
 }
