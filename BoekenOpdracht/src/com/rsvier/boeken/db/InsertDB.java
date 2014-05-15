@@ -5,6 +5,7 @@ package com.rsvier.boeken.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.rsvier.boeken.model.Boek;
@@ -61,10 +62,11 @@ public class InsertDB {
 	mPStmt.setString(5, boek.getGenre());
 	mPStmt.setInt(6, boek.getPaginas());
 	
-	//Execute the statement
-	mPStmt.execute();
+	//Execute the statement and store result in a boolean var.
+	boolean result = mPStmt.execute();
 	
-	System.out.println("Boek toegevoegd!");
+	if (result) System.out.println("Boek toegevoegd!");
+	else System.out.println("Boek niet toegevoegd!");
     }
     
 }
