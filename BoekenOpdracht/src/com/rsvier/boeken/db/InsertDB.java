@@ -14,6 +14,9 @@ import com.rsvier.boeken.model.Boek;
  * 
  * @version		1.00 5 mei 2014
  * @author 		Pieter
+ * 
+ * 
+ * 
  */
 public class InsertDB {
     protected Connection mDBConnection;
