@@ -3,7 +3,6 @@
  */
 package com.rsvier.boeken.db;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -15,40 +14,34 @@ import com.rsvier.boeken.model.Boek;
  * @version		1.00 5 mei 2014
  * @author 		Pieter
  */
-public class InsertDB {
-    protected Connection mDBConnection;
+public class InsertDB extends ConnectDB{
+    
     protected PreparedStatement mPStmt;
     
-    public InsertDB () {
-	try {
-	    ConnectDB db = new ConnectDB ();	
-	    mDBConnection = db.getDBConnection();
-	    
-	} catch (SQLException e) {
-	    
-	}
-    }
-    
-    public void closeCon () {
-	try {
-	    mDBConnection.close();
-	} catch (SQLException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
-	}
-    }
-    
+    /**
+     * Roept de parent aan. (Hoeft niet op deze manier, de call 'super()' wordt automatisch toegevoegd).
+     * 
+     * @throws SQLException
+     */
+    public InsertDB () throws SQLException{
+	super ();	
+    }    
     
     /**
-     * Prepares a statement for adding a book to the table.
-     * The table book has 6 fields. This function gets called by the AddBoek class.
+     * In: een Boek object.
+     * De tabel boek heeft 6 velden, net als een boek object. Deze functie genereeert een prepared statement, 
+     * en koppelt de velden van de database aan de variabelen van het Boek-object.
+     * Vervolgens wordt de query uitgevoerd. 
+     * 
+     * Voegt 
      * @param table
      * @param boek
      * @throws SQLException
      */
-    public void prepareQueryBoek (String table, Boek boek) throws SQLException {
+    public void prepareQueryBoek (Boek boek) throws SQLException {
 	//The query, the question marks represent the fields in the table.
-	String query = "INSERT INTO " + table + " values(?,?,?,?,?,?)";
+	String query = 	" INSERT INTO boek " + 
+			" values(?,?,?,?,?,?)";
 	
 	//Prepares the query.
 	mPStmt = mDBConnection.prepareStatement(query);
