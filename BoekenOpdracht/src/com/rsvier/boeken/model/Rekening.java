@@ -3,6 +3,8 @@
  */
 package com.rsvier.boeken.model;
 
+import com.rsvier.boeken.controller.Bestelling;
+
 /**
  * Class description
  * 
