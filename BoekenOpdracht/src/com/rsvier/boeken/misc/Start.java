@@ -5,12 +5,14 @@ package com.rsvier.boeken.misc;
 
 import java.sql.SQLException;
 
+import com.rsvier.boeken.controller.AddBoeken;
 import com.rsvier.boeken.db.CreateTables;
 import com.rsvier.boeken.model.Boek;
-import com.rsvier.boeken.model.BoekenLijst;
 
 /**
- * Class description
+ * Class description 
+ * Een dev klasse, bedoelt om de Database te vullen met Tabellen en Data.
+ * Ook om Test-code te kunnen testen.
  * 
  * @version		1.00 5 mei 2014
  * @author 		Pieter
@@ -35,6 +37,10 @@ public class Start {
 	} 
     }
     
+    /**
+     * Stuurt de CreateTables klasse aan.
+     * @throws SQLException
+     */
     protected static void createTables () throws SQLException {
 	CreateTables ct = new CreateTables();
 	//Create table Voorraad:
@@ -47,11 +53,15 @@ public class Start {
 	if (ct.createTableRekeningen() ) 
 	    System.out.println("Table 'Rekeningen' Created");
 	
-	ct.closeCon();
+	ct.closeConnection();
     }
-    
+    /**
+     * Voegt boeken toe aan de DB. Stuurt de AddBoek klasse aan.
+     * Ook te gebruiken om de Admin Controller te testen.
+     * @throws SQLException
+     */
     protected static void addBooksToTable () throws SQLException {
-	BoekenLijst bl = new BoekenLijst();
+	AddBoeken bl = new AddBoeken();
 	
 	bl.voegToeAanLijst(new Boek( 90414156 , "Boek1", "Auteur1", 14.99, "Thriller", 285));
 	bl.voegToeAanLijst(new Boek( 57456892 , "Boek2", "Auteur1", 17.99, "Roman", 385));

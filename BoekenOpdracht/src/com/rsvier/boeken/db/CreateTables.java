@@ -4,7 +4,6 @@
 package com.rsvier.boeken.db;
 
 import java.sql.SQLException;
-import java.sql.Connection;
 import java.sql.Statement;
 
 /**
@@ -24,26 +23,21 @@ import java.sql.Statement;
  *   en 'voorraad' en 'Bank' voor de tabel 'rekeningen'. Dit moet nog even worden aangepast.
  * 
  */
-
-
-
-public class CreateTables {
-    protected  Connection mDBConnection;
+public class CreateTables extends ConnectDB {
     
+    /**
+     * Call naar parent constructor om connectie op te zetten.
+     * @throws SQLException
+     */
     public CreateTables () throws SQLException {
-	ConnectDB db = new ConnectDB ();	
-	mDBConnection = db.getDBConnection();
+	super ();
     }
     
-    public void closeCon () {
-	try {
-	    mDBConnection.close();
-	} catch (SQLException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
-	}
-    }
-    
+    /**
+     * Functie die een query bevat om de tabel Voorraad op te zetten in de DB.
+     * @return
+     * @throws SQLException
+     */
     public boolean createTableVoorraad () throws SQLException {
 	String query = "CREATE TABLE IF NOT EXISTS voorraad "
 		+ "("
@@ -59,6 +53,11 @@ public class CreateTables {
 	return true;
     }
     
+    /**
+     * Functie die een query bevat om de tabel Boek op te zetten in de DB.
+     * @return
+     * @throws SQLException
+     */
     public boolean createTableBoek () throws SQLException {
 	String query = "CREATE TABLE IF NOT EXISTS boek "
 		+ "("
@@ -76,6 +75,12 @@ public class CreateTables {
 	return true;
     }
     
+    /**
+     * Functie die een query bevat om de tabel Rekeningen op te zetten in de DB.
+     * @todo : Opletten dat deze tabel eigenlijk in de database "Bank" moet komen.
+     * @return
+     * @throws SQLException
+     */
     public boolean createTableRekeningen () throws SQLException {
 	String query = "CREATE TABLE IF NOT EXISTS rekeningen "
 		+ "("
