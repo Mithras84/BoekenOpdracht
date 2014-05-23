@@ -5,8 +5,8 @@ package com.rsvier.boeken.misc;
 
 import java.sql.SQLException;
 
-import com.rsvier.boeken.controller.AddBoeken;
 import com.rsvier.boeken.db.CreateTables;
+import com.rsvier.boeken.model.AddBoeken;
 import com.rsvier.boeken.model.Boek;
 
 /**

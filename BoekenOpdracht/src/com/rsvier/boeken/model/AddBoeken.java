@@ -1,13 +1,12 @@
 /**
  * 
  */
-package com.rsvier.boeken.controller;
+package com.rsvier.boeken.model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.rsvier.boeken.db.InsertDB;
-import com.rsvier.boeken.model.Boek;
 
 /**
  * Class description
